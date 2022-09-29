@@ -1,4 +1,5 @@
-import { Camera, Clock, Scene, WebGLRenderer } from 'three'
+import { Camera, Scene, WebGLRenderer } from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 interface Updatable {
   tick: () => void
@@ -9,11 +10,14 @@ class Loop {
   private scene: Scene
   private renderer: WebGLRenderer
   updatables: Updatable[] = []
+  private controls: OrbitControls
 
   constructor(camera: Camera, scene: Scene, renderer: WebGLRenderer) {
     this.camera = camera
     this.scene = scene
     this.renderer = renderer
+
+    this.controls = new OrbitControls(camera, renderer.domElement)
   }
 
   start() {
@@ -28,6 +32,8 @@ class Loop {
   }
 
   tick() {
+    this.controls.update()
+
     // Code to update animations will go here
     for (const object of this.updatables) {
       object.tick()

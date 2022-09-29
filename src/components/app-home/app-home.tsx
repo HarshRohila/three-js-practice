@@ -1,7 +1,6 @@
 import { Component, h } from '@stencil/core'
 
 import { Scene, Color, PerspectiveCamera, MeshBasicMaterial, Mesh, BoxBufferGeometry, WebGLRenderer } from 'three'
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { Loop, Updatable } from '../../systems/Loop'
 
 @Component({
